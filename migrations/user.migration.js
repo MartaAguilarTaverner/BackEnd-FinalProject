@@ -1,77 +1,71 @@
-const { Model } = require('sequelize');
-
-module.exports = (sequelize, DataTypes) => {
-    class User extends Model {
-        static associate(models) {
-            this.hasMany(models.reservation, {
-                foreignKey: 'user_id',
-            });
-        }
-    }
-
-    User.init(
-        {
+module.exports = {
+    up: async (queryInterface, Sequelize) => {
+        await queryInterface.createTable('user', {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER,
+            },
             name: {
-                type: DataTypes.STRING,
-                require: true,
+                type: Sequelize.STRING,
+                requre: true,
                 allowNull: false,
                 minLength: 2,
                 maxLength: 20,
             },
             surname: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 require: true,
                 allowNull: false,
                 minLength: 2,
                 maxLength: 40,
             },
             email: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false,
                 minLength: 11,
                 maxLength: 50,
+                unique: true,
             },
             age: {
-                type: DataTypes.DATE,
+                type: Sequelize.DATE,
                 require: true,
                 allowNull: false,
             },
             phone_number: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false,
                 minLength: 9,
                 maxLength: 15,
             },
-            descriptiom: DataTypes.TEXT,
-            profile_img: DataTypes.STRING,
+            description: Sequelize.TEXT,
+            profile_img: Sequelize.STRING,
             password: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false,
                 minLength: 8,
                 maxLength: 30,
             },
             isAdmin: {
-                type: DataTypes.BOOLEAN,
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
             isOwner: {
-                type: DataTypes.BOOLEAN,
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
             createdAt: {
-                type: DataTypes.DATE,
+                type: Sequelize.DATE,
                 allowNull: false,
             },
             updatedAt: {
-                type: DataTypes.DATE,
+                type: Sequelize.DATE,
                 allowNull: false,
             },
-        },
-        {
-            sequelize,
-            modelName: 'user',
-            tableName: 'user',
-        }
-    );
-    return User;
+        });
+    },
+    down: async (queryInterface, Sequelize) => {
+        await queryInterface.dropTable('user');
+    },
 };
