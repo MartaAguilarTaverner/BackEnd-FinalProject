@@ -1,5 +1,3 @@
-const { Sequelize } = require('sequelize');
-
 module.exports = {
     up: async (queryInterface, Sequelize) => {
         await queryInterface.createTable('home_type', {

@@ -4,7 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         static associate(models) {
             this.hasMany(models.reservation, {
-                foreignKey: 'user_id',
+                foreignKey: 'userId',
+            });
+            this.hasMany(models.rented_space, {
+                foreignKey: 'userId',
             });
         }
     }

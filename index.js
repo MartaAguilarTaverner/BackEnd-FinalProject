@@ -23,6 +23,11 @@ app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json());
 
 //cors
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(router);
 
 //cors config

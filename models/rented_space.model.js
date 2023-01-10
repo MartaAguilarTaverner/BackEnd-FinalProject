@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             this.hasMany(models.reservation, {
                 foreignKey: 'reservationId',
-                foreignKey: 'userId',
             });
             this.hasMany(models.media, {
                 foreignKey: 'mediaId',
@@ -19,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
             });
             this.hasMany(models.home_type, {
                 foreignKey: 'home_typeId',
+            });
+            this.belongsTo(models.user, {
+                foreignKey: 'userId',
             });
         }
     }
