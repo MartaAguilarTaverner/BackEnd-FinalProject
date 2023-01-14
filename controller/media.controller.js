@@ -101,5 +101,4 @@ MediaController.deleteMedia = async (req, res) => {
     }
 };
 
-//TODO middleware base64 for convert and decode, for user the profile pict too and the crypto for the
-//TODO ..password, do the routes and test, start with the front and put few seeders too to be able to test.
+//TODO the crypto for the password, do the routes, put few seeders, test.

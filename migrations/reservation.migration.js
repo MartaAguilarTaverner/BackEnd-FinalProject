@@ -17,22 +17,22 @@ module.exports = {
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
             },
-            rented_spaceId: {
+            rentedSpaceId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'rented_space',
+                    model: 'rentedSpace',
                     key: 'id',
                 },
                 allowNull: false,
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
             },
-            start_date: {
+            startDate: {
                 type: Sequelize.DATE,
                 allowNull: false,
                 unique: true,
             },
-            end_date: {
+            endDate: {
                 type: Sequelize.DATE,
                 allowNull: false,
                 unique: true,

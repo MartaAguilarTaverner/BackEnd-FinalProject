@@ -1,6 +1,6 @@
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable('rented_space', {
+        await queryInterface.createTable('rentedSpace', {
             id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
@@ -17,20 +17,20 @@ module.exports = {
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
             },
-            home_typeId: {
+            homeTypeId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'rented_space',
+                    model: 'rentedSpace',
                     key: 'id',
                 },
                 allowNull: false,
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
             },
-            room_typeId: {
+            roomTypeId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'rented_space',
+                    model: 'rentedSpace',
                     key: 'id',
                 },
                 allowNull: false,
@@ -40,22 +40,28 @@ module.exports = {
             mediaId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'rented_space',
+                    model: 'rentedSpace',
                     key: 'id',
                 },
                 allowNull: false,
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
             },
-            max_persons: {
+            title: {
+                type: Sequelize.STRING,
+                allowNull: false,
+                minLength: 10,
+                maxLength: 10,
+            },
+            maxPersons: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            num_bedrooms: {
+            numBedrooms: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            num_bathrooms: {
+            numBathrooms: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
@@ -112,6 +118,6 @@ module.exports = {
         });
     },
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable('rented_space');
+        await queryInterface.dropTable('rentedSpace');
     },
 };

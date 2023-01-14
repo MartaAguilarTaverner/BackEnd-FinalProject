@@ -1,11 +1,11 @@
 const { Model } = require('sequelize');
 const ReservationModel = require('./reservation.model');
-const Room_TypeModel = require('./room_type.model');
+const RoomTypeModel = require('./roomType.model');
 const MediaModel = require('./media.model');
-const Home_TypeModel = require('./home_type.model');
+const HomeTypeModel = require('./homeType.model');
 
 module.exports = (sequelize, DataTypes) => {
-    class Rented_Space extends Model {
+    class RentedSpace extends Model {
         static associate(models) {
             this.hasMany(models.reservation, {
                 foreignKey: 'reservationId',
@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
             this.hasMany(models.media, {
                 foreignKey: 'mediaId',
             });
-            this.hasMany(models.room_type, {
-                foreignKey: 'room_typeId',
+            this.hasMany(models.roomType, {
+                foreignKey: 'roomTypeId',
             });
-            this.hasMany(models.home_type, {
-                foreignKey: 'home_typeId',
+            this.hasMany(models.homeType, {
+                foreignKey: 'homeTypeId',
             });
             this.belongsTo(models.user, {
                 foreignKey: 'userId',
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
 
-    Rented_Space.init(
+    RentedSpace.init(
         {
             userId: {
                 type: DataTypes.INTEGER,
@@ -35,19 +35,19 @@ module.exports = (sequelize, DataTypes) => {
                 },
                 allowNull: false,
             },
-            home_typeId: {
+            homeTypeId: {
                 type: DataTypes.INTEGER,
                 references: {
-                    model: Home_TypeModel,
-                    key: 'home_typeId',
+                    model: HomeTypeModel,
+                    key: 'homeTypeId',
                 },
                 allowNull: false,
             },
-            room_typeId: {
+            roomTypeId: {
                 type: DataTypes.INTEGER,
                 references: {
-                    model: Room_TypeModel,
-                    key: 'room_typeId',
+                    model: RoomTypeModel,
+                    key: 'roomTypeId',
                 },
                 allowNull: false,
             },
@@ -58,15 +58,21 @@ module.exports = (sequelize, DataTypes) => {
                     key: 'mediaId',
                 },
             },
-            max_persons: {
+            title: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                minLength: 10,
+                maxLength: 50,
+            },
+            maxPersons: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            num_bedrooms: {
+            numBedrooms: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
-            num_bathrooms: {
+            numBathrooms: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
@@ -127,9 +133,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: 'rented_space',
-            tableName: 'rented_space',
+            modelName: 'rentedSpace',
+            tableName: 'rentedSpace',
         }
     );
-    return Rented_Space;
+    return RentedSpace;
 };

@@ -33,14 +33,14 @@ module.exports = {
                 require: true,
                 allowNull: false,
             },
-            phone_number: {
+            phoneNumber: {
                 type: Sequelize.STRING,
                 allowNull: false,
                 minLength: 9,
                 maxLength: 15,
             },
             description: Sequelize.TEXT,
-            profile_img: Sequelize.STRING,
+            profileImg: Sequelize.STRING,
             password: {
                 type: Sequelize.STRING,
                 allowNull: false,

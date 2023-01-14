@@ -1,15 +1,15 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class Home_Type extends Model {
+    class HomeType extends Model {
         static associate(models) {
-            Home_Type.belongsTo(models.rented_space, {
-                foreignKey: 'home_typeId',
+            HomeType.belongsTo(models.rentedSpace, {
+                foreignKey: 'homeTypeId',
             });
         }
     }
 
-    Home_Type.init(
+    HomeType.init(
         {
             apartment: {
                 type: DataTypes.BOOLEAN,
@@ -42,9 +42,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: 'home_type',
-            tableName: 'home_type',
+            modelName: 'homeType',
+            tableName: 'homeType',
         }
     );
-    return Home_Type;
+    return HomeType;
 };

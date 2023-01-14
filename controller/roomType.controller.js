@@ -1,12 +1,12 @@
 const db = require('../models');
-const room_type = db.room_type;
+const roomType = db.roomType;
 
 const RoomTypeController = {};
 
 //GROUP SEARCH
 RoomTypeController.getAll = async (req, res) => {
     try {
-        const response = await room_type.findAll();
+        const response = await roomType.findAll();
 
         res.send(response);
     } catch (error) {
@@ -21,7 +21,7 @@ RoomTypeController.getOnebyId = async (req, res) => {
     try {
         const id = req.params.id;
 
-        const response = await room_type.findByPk(id);
+        const response = await roomType.findByPk(id);
 
         res.send(response);
     } catch (error) {
@@ -31,7 +31,7 @@ RoomTypeController.getOnebyId = async (req, res) => {
     }
 };
 
-//CREATE ROOM_TYPE
+//CREATE ROOMTYPE
 RoomTypeController.createRoomType = async (req, res) => {
     try {
         const body = req.body;
@@ -39,7 +39,7 @@ RoomTypeController.createRoomType = async (req, res) => {
         const twoBeds = body.twoBeds;
         const masterBed = body.masterBed;
 
-        const response = await room_type.create({
+        const response = await roomType.create({
             individual,
             twoBeds,
             masterBed,
@@ -55,7 +55,7 @@ RoomTypeController.createRoomType = async (req, res) => {
     }
 };
 
-//MODIFY ROOM_TYPE
+//MODIFY ROOMTYPE
 RoomTypeController.modifyRoomType = async (req, res) => {
     try {
         const body = req.body;
@@ -65,7 +65,7 @@ RoomTypeController.modifyRoomType = async (req, res) => {
         Object.keys(body).forEach((property) => {
             roomObj[property] = body[property];
         });
-        const result = await room_type.update(roomObj, { where: { id } });
+        const result = await roomType.update(roomObj, { where: { id } });
 
         res.send(result);
     } catch (error) {
@@ -77,18 +77,18 @@ RoomTypeController.modifyRoomType = async (req, res) => {
     }
 };
 
-//DELETE ROOM_TYPE
+//DELETE ROOMTYPE
 RoomTypeController.deleteRoomType = async (req, res) => {
     try {
         const id = req.parms.id;
-        const response = await room_type.destroy({ where: { id } });
+        const response = await roomType.destroy({ where: { id } });
 
         res.send(response);
     } catch (error) {
         res.status(500).send({
             message:
                 error.message ||
-                'Some error ocurred while trying to delete a room_type, please check everything is alright or try again in few minutes',
+                'Some error ocurred while trying to delete a room Type, please check everything is alright or try again in few minutes',
         });
     }
 };

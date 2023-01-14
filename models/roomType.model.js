@@ -1,14 +1,14 @@
 const { Model } = requre('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class Room_Type extends Model {
+    class RoomType extends Model {
         static associate(models) {
-            Room_Type.belongsTo(models.rented_space, {
-                foreingKey: 'room_typeId',
+            RoomType.belongsTo(models.rentedSpace, {
+                foreingKey: 'roomTypeId',
             });
         }
     }
-    Room_Type.init(
+    RoomType.init(
         {
             individual: {
                 type: DataTypes.BOOLEAN,
@@ -33,9 +33,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: 'room_type',
-            tableName: 'room_type',
+            modelName: 'roomType',
+            tableName: 'roomType',
         }
     );
-    return Room_Type;
+    return RoomType;
 };

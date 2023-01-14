@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             this.hasMany(models.reservation, {
                 foreignKey: 'userId',
             });
-            this.hasMany(models.rented_space, {
+            this.hasMany(models.rentedSpace, {
                 foreignKey: 'userId',
             });
         }
@@ -39,14 +39,14 @@ module.exports = (sequelize, DataTypes) => {
                 require: true,
                 allowNull: false,
             },
-            phone_number: {
+            phoneNumber: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 minLength: 9,
                 maxLength: 15,
             },
             descriptiom: DataTypes.TEXT,
-            profile_img: DataTypes.STRING,
+            profileImg: DataTypes.STRING,
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,

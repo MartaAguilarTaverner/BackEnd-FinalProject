@@ -1,9 +1,9 @@
-const { Model, DATE } = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
     class Media extends Model {
         static associate(models) {
-            Media.belongsTo(models.rented_space, {
+            Media.belongsTo(models.rentedSpace, {
                 foreignKey: 'mediaId',
             });
         }

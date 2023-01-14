@@ -1,6 +1,6 @@
 const { Model } = require('sequelize');
 const UserModel = require('./user.model');
-const Rented_SpaceModel = require('./rented_space.model');
+const RentedSpaceModel = require('./rentedSpace.model');
 
 module.exports = (sequelize, DataTypes) => {
     class Reservation extends Model {
@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
             Reservation.belongsTo(models.user, {
                 foreignKey: 'userId',
             });
-            Reservation.belongsTo(models.rented_space, {
-                foreignKey: 'rented_spaceId',
+            Reservation.belongsTo(models.rentedSpace, {
+                foreignKey: 'rentedSpaceId',
             });
         }
     }
@@ -26,18 +26,18 @@ module.exports = (sequelize, DataTypes) => {
                 },
                 allowNull: false,
             },
-            rented_spaceId: {
+            rentedSpaceId: {
                 type: DataTypes.INTEGER,
                 references: {
-                    model: Rented_SpaceModel,
+                    model: RentedSpaceModel,
                 },
                 allowNull: false,
             },
-            start_date: {
+            startDate: {
                 type: DataTypes.DATE,
                 allowNull: false,
             },
-            end_date: {
+            endDate: {
                 type: DataTypes.DATE,
                 allowNull: false,
             },

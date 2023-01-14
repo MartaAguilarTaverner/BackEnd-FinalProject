@@ -1,12 +1,12 @@
 const db = require('../models');
-const home_type = db.home_type;
+const homeType = db.homeType;
 
 const HomeTypeController = {};
 
 //GROUP SEARCH
 HomeTypeController.getAll = async (req, res) => {
     try {
-        const response = await home_type.findAll();
+        const response = await homeType.findAll();
 
         res.send(response);
     } catch (error) {
@@ -21,7 +21,7 @@ HomeTypeController.getOnebyId = async (req, res) => {
     try {
         const id = req.params.id;
 
-        const response = await home_type.findByPk(id);
+        const response = await homeType.findByPk(id);
 
         res.send(response);
     } catch (error) {
@@ -31,7 +31,7 @@ HomeTypeController.getOnebyId = async (req, res) => {
     }
 };
 
-//CREATE HOME_TYPE
+//CREATE HOMETYPE
 HomeTypeController.createHomeType = async (req, res) => {
     try {
         const body = req.body;
@@ -41,7 +41,7 @@ HomeTypeController.createHomeType = async (req, res) => {
         const ruralHouse = body.ruralHouse;
         const shared = body.shared;
 
-        const response = await home_type.create({ apartment, house, chalet, ruralHouse, shared });
+        const response = await homeType.create({ apartment, house, chalet, ruralHouse, shared });
 
         res.send({ id: response.id });
     } catch (error) {
@@ -53,7 +53,7 @@ HomeTypeController.createHomeType = async (req, res) => {
     }
 };
 
-//MODIFY HOME_TYPE
+//MODIFY HOMETYPE
 HomeTypeController.modifyHomeType = async (req, res) => {
     try {
         const body = req.body;
@@ -64,7 +64,7 @@ HomeTypeController.modifyHomeType = async (req, res) => {
             homeObj[property] = body[property];
         });
 
-        const result = await home_type.update(homeObj, { where: { id } });
+        const result = await homeType.update(homeObj, { where: { id } });
 
         res.send(result);
     } catch (error) {
@@ -76,11 +76,11 @@ HomeTypeController.modifyHomeType = async (req, res) => {
     }
 };
 
-//DELETE HOME_TYPE
+//DELETE HOMETYPE
 HomeTypeController.deleteHomeType = async (req, res) => {
     try {
         const id = req.params.id;
-        const response = await home_type.destroy({ where: { id } });
+        const response = await homeType.destroy({ where: { id } });
 
         res.send(response);
     } catch (error) {

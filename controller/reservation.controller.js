@@ -30,11 +30,11 @@ ReservationController.getAllByUserId = async (req, res) => {
     }
 };
 
-ReservationController.getAllByRented_spaceId = async (req, res) => {
+ReservationController.getAllByRentedSpaceId = async (req, res) => {
     try {
-        const rented_spaceId = req.params.rented_spaceid;
+        const rentedSpaceId = req.params.rentedSpaceid;
 
-        const response = await reservation.findAll({ where: { rented_spaceId } });
+        const response = await reservation.findAll({ where: { rentedSpaceId } });
 
         res.send(response);
     } catch (error) {
@@ -64,13 +64,13 @@ ReservationController.doReservation = async (req, res) => {
     try {
         const body = req.body;
         const userId = body.userId;
-        const rented_spaceId = body.rented_spaceId;
-        const start_date = body.start_date;
-        const end_date = body.end_date;
+        const rentedSpaceId = body.rentedSpaceId;
+        const startDate = body.startDate;
+        const endDate = body.endDate;
         const price = body.price;
         const total = body.total;
 
-        const response = await reservation.create({ userId, rented_spaceId, start_date, end_date, price, total });
+        const response = await reservation.create({ userId, rentedSpaceId, startDate, endDate, price, total });
 
         res.send({ id: response.id });
     } catch (error) {

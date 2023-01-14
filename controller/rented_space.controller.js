@@ -1,12 +1,12 @@
 const db = require('../models');
-const rented_space = db.rented_space;
+const rentedSpace = db.rentedSpace;
 
-const Rented_spaceController = {};
+const RentedSpaceController = {};
 
 //GROUP SEARCH
-Rented_spaceController.getAll = async (req, res) => {
+RentedSpaceController.getAll = async (req, res) => {
     try {
-        const response = await rented_space.findAll();
+        const response = await rentedSpace.findAll();
 
         res.send(response);
     } catch (error) {
@@ -16,11 +16,11 @@ Rented_spaceController.getAll = async (req, res) => {
     }
 };
 
-Rented_spaceController.getAllbyUserId = async (req, res) => {
+RentedSpaceController.getAllbyUserId = async (req, res) => {
     try {
         const userId = req.params.userid;
 
-        const response = await rented_space.findAll({ where: { userId } });
+        const response = await rentedSpace.findAll({ where: { userId } });
 
         res.send(response);
     } catch (error) {
@@ -30,11 +30,11 @@ Rented_spaceController.getAllbyUserId = async (req, res) => {
     }
 };
 
-Rented_spaceController.getAllByRoomTypeId = async (req, res) => {
+RentedSpaceController.getAllByRoomTypeId = async (req, res) => {
     try {
-        const room_typeId = req.params.room_typeid;
+        const roomTypeId = req.params.roomTypeid;
 
-        const response = await rented_space.finAll({ where: { room_typeId } });
+        const response = await rentedSpace.finAll({ where: { roomTypeId } });
 
         res.send(response);
     } catch (error) {
@@ -44,11 +44,11 @@ Rented_spaceController.getAllByRoomTypeId = async (req, res) => {
     }
 };
 
-Rented_spaceController.getAllByHomeTypeId = async (req, res) => {
+RentedSpaceController.getAllByHomeTypeId = async (req, res) => {
     try {
-        const home_typeId = req.params.home_typeid;
+        const homeTypeId = req.params.homeTypeid;
 
-        const response = await rented_space.finAll({ where: { home_typeId } });
+        const response = await rentedSpace.finAll({ where: { homeTypeId } });
 
         res.send(response);
     } catch (error) {
@@ -58,11 +58,11 @@ Rented_spaceController.getAllByHomeTypeId = async (req, res) => {
     }
 };
 
-Rented_spaceController.getAllByMediaId = async (req, res) => {
+RentedSpaceController.getAllByMediaId = async (req, res) => {
     try {
         const mediaId = req.params.mediaid;
 
-        const response = await rented_space.findAll({ where: { mediaId } });
+        const response = await rentedSpace.findAll({ where: { mediaId } });
 
         res.send(response);
     } catch (error) {
@@ -73,11 +73,11 @@ Rented_spaceController.getAllByMediaId = async (req, res) => {
 };
 
 //INDIVIDUALSEARCH
-Rented_spaceController.getOnebyId = async (req, res) => {
+RentedSpaceController.getOnebyId = async (req, res) => {
     try {
         const id = req.params.id;
 
-        const response = await rented_space.findByPk(id);
+        const response = await rentedSpace.findByPk(id);
 
         res.send(response);
     } catch (error) {
@@ -87,17 +87,17 @@ Rented_spaceController.getOnebyId = async (req, res) => {
     }
 };
 
-//CREATE RENTED_SPACE
-Rented_spaceController.createRentedSpace = async (req, res) => {
+//CREATE RENTEDSPACE
+RentedSpaceController.createRentedSpace = async (req, res) => {
     try {
         const body = req.body;
         const userId = body.userId;
-        const home_typeId = body.home_typeId;
-        const room_typeId = body.room_typeId;
+        const homeTypeId = body.homeTypeId;
+        const roomTypeId = body.roomTypeId;
         const mediaId = body.mediaId;
-        const max_persons = body.max_persons;
-        const num_bedrooms = body.num_bedrooms;
-        const num_bathrooms = body.num_bathrooms;
+        const maxPersons = body.maxPersons;
+        const numBedrooms = body.numBedrooms;
+        const numBathrooms = body.numBathrooms;
         const description = body.description;
         const address = body.address;
         const tv = body.tv;
@@ -112,12 +112,12 @@ Rented_spaceController.createRentedSpace = async (req, res) => {
 
         const response = await review.create({
             userId,
-            home_typeId,
-            room_typeId,
+            homeTypeId,
+            roomTypeId,
             mediaId,
-            max_persons,
-            num_bedrooms,
-            num_bathrooms,
+            maxPersons,
+            numBedrooms,
+            numBathrooms,
             description,
             address,
             tv,
@@ -141,8 +141,8 @@ Rented_spaceController.createRentedSpace = async (req, res) => {
     }
 };
 
-//MODIFY RENTED_SPACE
-Rented_spaceController.modifyRentedSpace = async (req, res) => {
+//MODIFY RENTEDSPACE
+RentedSpaceController.modifyRentedSpace = async (req, res) => {
     try {
         const body = req.body;
         const id = req.params.id;
@@ -152,7 +152,7 @@ Rented_spaceController.modifyRentedSpace = async (req, res) => {
             spaceObj[property] = body[property];
         });
 
-        const result = await rented_space.update(spaceObj, { where: { id } });
+        const result = await rentedSpace.update(spaceObj, { where: { id } });
 
         res.send(result);
     } catch (error) {
@@ -164,11 +164,11 @@ Rented_spaceController.modifyRentedSpace = async (req, res) => {
     }
 };
 
-//DELETE RENTED_SPACE
-Rented_spaceController.deleteRentedSpace = async (req, res) => {
+//DELETE RENTEDSPACE
+RentedSpaceController.deleteRentedSpace = async (req, res) => {
     try {
         const id = req.params.id;
-        const response = await rented_space.destroy({ where: { id } });
+        const response = await rentedSpace.destroy({ where: { id } });
 
         res.send(response);
     } catch (error) {

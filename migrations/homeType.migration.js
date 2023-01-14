@@ -1,30 +1,30 @@
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        await queryInterface.createTable('room_type', {
+        await queryInterface.createTable('homeType', {
             id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 primaryKey: true,
                 autoIncrement: true,
             },
-            individual: {
+            apartment: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
-            twoBeds: {
+            house: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
-            masterBed: {
+            chalet: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
-            createdAt: {
-                type: Sequelize.DATE,
+            ruralHouse: {
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
-            updatedAt: {
-                type: Sequelize.DATE,
+            shared: {
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
             },
             createdAt: {
@@ -38,6 +38,6 @@ module.exports = {
         });
     },
     down: async (queryInterface, Sequelize) => {
-        await queryInterface.dropTable('room_type');
+        await queryInterface.dropTable('homeType');
     },
 };
