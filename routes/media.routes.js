@@ -4,8 +4,14 @@ const MediaController = require('../controller/media.controller');
 
 const router = express.Router();
 
-router.get('/', AuthMiddleware.authToken, MediaController.getAll);
+router.get('/', MediaController.getAll);
 
-router.get('/:id', AuthMiddleware.authToken, MediaController.getOnebyId);
+router.get('/:id', MediaController.getOnebyId);
 
-router.post();
+router.post('/:id', AuthMiddleware.isOwner, MediaController.createMedia);
+
+router.put('/:id', AuthMiddleware.isOwner, MediaController.modifyMedia);
+
+router.delete('/:id', AuthMiddleware.isOwner, MediaController.deleteMedia);
+
+module.exports = router;

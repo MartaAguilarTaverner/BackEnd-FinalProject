@@ -16,7 +16,7 @@ ReservationController.getAll = async (req, res) => {
     }
 };
 
-ReservationController.getAllByUserId = async (req, res) => {
+ReservationController.getAllbyUserId = async (req, res) => {
     try {
         const userId = req.params.userid;
 
@@ -30,7 +30,7 @@ ReservationController.getAllByUserId = async (req, res) => {
     }
 };
 
-ReservationController.getAllByRentedSpaceId = async (req, res) => {
+ReservationController.getAllbyRentedSpaceId = async (req, res) => {
     try {
         const rentedSpaceId = req.params.rentedSpaceid;
 
@@ -45,7 +45,7 @@ ReservationController.getAllByRentedSpaceId = async (req, res) => {
 };
 
 //INDIVIDUAL SEARCH
-ReservationController.getOneById = async (req, res) => {
+ReservationController.getOnebyId = async (req, res) => {
     try {
         const id = req.params.id;
 

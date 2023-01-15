@@ -1,5 +1,6 @@
 const db = require('../models');
 const homeType = db.homeType;
+const user = db.user;
 
 const HomeTypeController = {};
 
@@ -80,6 +81,7 @@ HomeTypeController.modifyHomeType = async (req, res) => {
 HomeTypeController.deleteHomeType = async (req, res) => {
     try {
         const id = req.params.id;
+
         const response = await homeType.destroy({ where: { id } });
 
         res.send(response);

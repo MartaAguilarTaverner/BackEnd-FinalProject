@@ -17,7 +17,7 @@ ReviewController.getAll = async (req, res) => {
 };
 
 //INDIVIDUAL SEARCH
-ReviewController.getOneById = async (req, res) => {
+ReviewController.getOnebyId = async (req, res) => {
     try {
         const id = req.params.id;
 

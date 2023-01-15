@@ -32,7 +32,7 @@ UserController.getAllUsersOwner = async (req, res) => {
 
 UserController.getAllUsersAdmin = async (req, res) => {
     try {
-        const response = await user.finAll({ where: { isAdmin: true } });
+        const response = await user.findAll({ where: { isAdmin: true } });
 
         res.send(response);
     } catch (error) {
@@ -43,7 +43,7 @@ UserController.getAllUsersAdmin = async (req, res) => {
 };
 
 //INDIVIDUAL SEARCH
-UserController.getOneById = async (req, res) => {
+UserController.getOnebyId = async (req, res) => {
     try {
         const id = req.params.id;
 

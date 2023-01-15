@@ -28,4 +28,28 @@ AuthMiddleware.authToken = (req, res, next) => {
     });
 };
 
+AuthMiddleware.isAdmin = async (req, res, next) => {
+    const userId = req.body.userId;
+
+    const user = await user.findByPk(userId);
+
+    if (!user.isAdmin) {
+        return res.sendStatus(403);
+    }
+
+    next();
+};
+
+AuthMiddleware.isOwner = async (req, res, next) => {
+    const userId = req.body.userId;
+
+    const user = await user.findByPk(userId);
+
+    if (!user.isOwner) {
+        return res.sendStatus(403);
+    }
+
+    next();
+};
+
 module.exports = AuthMiddleware;

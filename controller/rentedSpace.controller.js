@@ -30,7 +30,7 @@ RentedSpaceController.getAllbyUserId = async (req, res) => {
     }
 };
 
-RentedSpaceController.getAllByRoomTypeId = async (req, res) => {
+RentedSpaceController.getAllbyRoomTypeId = async (req, res) => {
     try {
         const roomTypeId = req.params.roomTypeid;
 
@@ -44,7 +44,7 @@ RentedSpaceController.getAllByRoomTypeId = async (req, res) => {
     }
 };
 
-RentedSpaceController.getAllByHomeTypeId = async (req, res) => {
+RentedSpaceController.getAllbyHomeTypeId = async (req, res) => {
     try {
         const homeTypeId = req.params.homeTypeid;
 
@@ -58,7 +58,7 @@ RentedSpaceController.getAllByHomeTypeId = async (req, res) => {
     }
 };
 
-RentedSpaceController.getAllByMediaId = async (req, res) => {
+RentedSpaceController.getAllbyMediaId = async (req, res) => {
     try {
         const mediaId = req.params.mediaid;
 
