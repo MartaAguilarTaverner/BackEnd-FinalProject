@@ -7,25 +7,10 @@ module.exports = {
                 primaryKey: true,
                 autoIncrement: true,
             },
-            individual: {
-                type: Sequelize.BOOLEAN,
+            name: {
+                type: Sequelize.STRING,
                 allowNull: false,
-            },
-            twoBeds: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-            },
-            masterBed: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-            },
-            createdAt: {
-                type: Sequelize.DATE,
-                allowNull: false,
-            },
-            updatedAt: {
-                type: Sequelize.DATE,
-                allowNull: false,
+                unique: true,
             },
             createdAt: {
                 type: Sequelize.DATE,

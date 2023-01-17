@@ -11,24 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 
     HomeType.init(
         {
-            apartment: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false,
-            },
-            house: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false,
-            },
-            chalet: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false,
-            },
-            ruralHouse: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false,
-            },
-            shared: {
-                type: DataTypes.BOOLEAN,
+            name: {
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             createdAt: {

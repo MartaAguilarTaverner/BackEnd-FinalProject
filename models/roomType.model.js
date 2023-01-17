@@ -10,16 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     }
     RoomType.init(
         {
-            individual: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false,
-            },
-            twoBeds: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false,
-            },
-            masterBed: {
-                type: DataTypes.BOOLEAN,
+            name: {
+                type: DataTypes.STRING,
+                unique: true,
                 allowNull: false,
             },
             createdAt: {

@@ -7,24 +7,8 @@ module.exports = {
                 primaryKey: true,
                 autoIncrement: true,
             },
-            apartment: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-            },
-            house: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-            },
-            chalet: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-            },
-            ruralHouse: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-            },
-            shared: {
-                type: Sequelize.BOOLEAN,
+            name: {
+                type: Sequelize.STRING,
                 allowNull: false,
             },
             createdAt: {
