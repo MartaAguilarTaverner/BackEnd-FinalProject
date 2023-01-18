@@ -119,3 +119,5 @@ ReservationController.deleteReservation = async (req, res) => {
         });
     }
 };
+
+module.exports = ReservationController;

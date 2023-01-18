@@ -102,3 +102,5 @@ MediaController.deleteMedia = async (req, res) => {
 };
 
 //TODO the crypto for the password, do the routes, put few seeders, test.
+
+module.exports = MediaController;

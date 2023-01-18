@@ -1,6 +1,5 @@
 const db = require('../models');
 const AuthMiddleware = require('../Middleware/auth.users');
-const CryptPassword = require('../Middleware/cryptopassword.users');
 const user = db.user;
 
 const UserController = {};
@@ -157,3 +156,5 @@ UserController.deleteUser = async (req, res) => {
         });
     }
 };
+
+module.exports = UserController;

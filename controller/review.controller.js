@@ -1,4 +1,4 @@
-const db = requile('../models');
+const db = require('../models');
 const review = db.review;
 
 const ReviewController = {};
@@ -89,3 +89,5 @@ ReviewController.deleteReview = async (req, res) => {
         });
     }
 };
+
+module.exports = ReviewController;

@@ -93,3 +93,5 @@ HomeTypeController.deleteHomeType = async (req, res) => {
         });
     }
 };
+
+module.exports = HomeTypeController;

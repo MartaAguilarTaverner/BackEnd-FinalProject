@@ -92,3 +92,5 @@ RoomTypeController.deleteRoomType = async (req, res) => {
         });
     }
 };
+
+module.exports = RoomTypeController;

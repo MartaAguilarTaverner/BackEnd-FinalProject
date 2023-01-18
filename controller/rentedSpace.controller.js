@@ -179,3 +179,5 @@ RentedSpaceController.deleteRentedSpace = async (req, res) => {
         });
     }
 };
+
+module.exports = RentedSpaceController;
