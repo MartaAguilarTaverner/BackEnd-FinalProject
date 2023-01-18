@@ -10,7 +10,7 @@ router.get('/owner', AuthMiddleware.isAdmin, UserController.getAllUsersOwner);
 
 router.get('/admin', AuthMiddleware.isAdmin, UserController.getAllUsersAdmin);
 
-router.get('/:id', AuthMiddleware.authToken, UserController.getOnebyId);
+router.get('/:id(\\d+$)', AuthMiddleware.authToken, UserController.getOnebyId);
 
 router.post('/login', UserController.login);
 

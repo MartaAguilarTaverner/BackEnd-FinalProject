@@ -83,6 +83,7 @@ UserController.login = async (req, res) => {
             throw new Error('No user registered with those credentials');
         }
     } catch (error) {
+        console.log('🚀 ~ file: user.controller.js:90 ~ UserController.login= ~ error', error);
         res.status(500).send({
             message: error.message || 'Some error ocurred while trying to access, try again in few minutes',
         });

@@ -11,7 +11,7 @@ const db = require('./db/db');
 const router = require('./router');
 
 const app = express();
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3001;
 const token = crypto.lib.WordArray.random(64).toString();
 const envFile = `TOKEN_SECRET =${token}`;
 
@@ -24,7 +24,7 @@ app.use(express.json());
 
 //cors
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: '*',
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
