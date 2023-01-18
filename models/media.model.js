@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false,
             },
             img3: {
-                tupe: DataTypes.STRING,
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             img4: {

@@ -7,11 +7,11 @@ const fs = require('fs');
 const cors = require('cors');
 
 const logger = require('./config/winston');
-const db = require();
+const db = require('./db/db');
 const router = require('./router');
 
 const app = express();
-const PORT = process.env.PORT || 3006;
+const PORT = process.env.PORT || 3306;
 const token = crypto.lib.WordArray.random(64).toString();
 const envFile = `TOKEN_SECRET =${token}`;
 
