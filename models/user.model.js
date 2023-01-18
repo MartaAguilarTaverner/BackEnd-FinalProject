@@ -45,7 +45,6 @@ module.exports = (sequelize, DataTypes) => {
                 minLength: 9,
                 maxLength: 15,
             },
-            descriptiom: DataTypes.TEXT,
             profileImg: DataTypes.STRING,
             password: {
                 type: DataTypes.STRING,

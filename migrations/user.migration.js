@@ -39,7 +39,6 @@ module.exports = {
                 minLength: 9,
                 maxLength: 15,
             },
-            description: Sequelize.TEXT,
             profileImg: Sequelize.STRING,
             password: {
                 type: Sequelize.STRING,
