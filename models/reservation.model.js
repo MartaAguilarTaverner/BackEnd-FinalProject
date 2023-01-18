@@ -5,7 +5,7 @@ const RentedSpaceModel = require('./rentedSpace.model');
 module.exports = (sequelize, DataTypes) => {
     class Reservation extends Model {
         static associate(models) {
-            this.hasMany(models.reviews, {
+            this.hasMany(models.review, {
                 foreignKey: 'reservationId',
             });
             Reservation.belongsTo(models.user, {
