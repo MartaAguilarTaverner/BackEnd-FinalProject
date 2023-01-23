@@ -18,7 +18,7 @@ AuthMiddleware.authToken = (req, res, next) => {
         return res.sendStatus(401);
     }
 
-    jwt.verify(authHeader, process.env.TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
         console.log(err);
 
         if (err) {
