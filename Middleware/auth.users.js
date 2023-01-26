@@ -55,4 +55,20 @@ AuthMiddleware.isOwner = async (req, res, next) => {
     next();
 };
 
+AuthMiddleware.userIsAllowed = async (req, res, next) => {
+    const userId = req.body.userId;
+    const user = req.body.user;
+
+    if (user.userId !== userId) {
+        return res.sendStatus(403);
+    }
+
+    const foundUser = await user.findByPk(userId);
+
+    if (!foundUser.isAdmin) {
+        return res.sendStatus(403);
+    }
+    next();
+};
+
 module.exports = AuthMiddleware;

@@ -1,4 +1,5 @@
 const db = require('../models');
+const AuthMiddleware = require('../Middleware/auth.users');
 const roomType = db.roomType;
 
 const RoomTypeController = {};
