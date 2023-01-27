@@ -5,16 +5,16 @@ const router = require('./homeType.routes');
 
 router.get('/', AuthMiddleware.isAdmin, ReservationController.getAll);
 
-router.get('/user', AuthMiddleware.authToken, ReservationController.getAllbyUserId);
+router.get('/user', AuthMiddleware.userIsAllowed, ReservationController.getAllbyUserId);
 
 router.get('/rentedspace', AuthMiddleware.authToken, ReservationController.getAllbyRentedSpaceId);
 
-router.get('/:id', AuthMiddleware.authToken, ReservationController.getOnebyId);
+router.get('/:id', AuthMiddleware.userIsAllowed, ReservationController.getOnebyId);
 
 router.post('/:id', AuthMiddleware.authToken, ReservationController.doReservation);
 
-router.put('/:id', AuthMiddleware.authToken, ReservationController.modifyReservation);
+router.put('/:id', AuthMiddleware.userIsAllowed, ReservationController.modifyReservation);
 
-router.delete('/:id', AuthMiddleware.authToken, ReservationController.modifyReservation);
+router.delete('/:id', AuthMiddleware.userIsAllowed, ReservationController.modifyReservation);
 
 module.exports = router;

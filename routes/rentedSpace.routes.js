@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', RentedSpaceController.getAll);
 
-router.get('/all', AuthMiddleware.isAdmin, RentedSpaceController.getAllbyUserId);
+router.get('/all', AuthMiddleware.userIsAllowed, RentedSpaceController.getAllbyUserId);
 
 router.get('/roomtype', RentedSpaceController.getAllbyRoomTypeId);
 
@@ -16,8 +16,8 @@ router.get('/:id', RentedSpaceController.getOnebyId);
 
 router.post('/create', RentedSpaceController.createRentedSpace);
 
-router.put('/modify', AuthMiddleware.isOwner, RentedSpaceController.modifyRentedSpace);
+router.put('/modify', AuthMiddleware.isOwner, AuthMiddleware.isAdmin, RentedSpaceController.modifyRentedSpace);
 
-router.delete('/delete', AuthMiddleware.isOwner, RentedSpaceController.deleteRentedSpace);
+router.delete('/delete', AuthMiddleware.isOwner, AuthMiddleware.isAdmin, RentedSpaceController.deleteRentedSpace);
 
 module.exports = router;

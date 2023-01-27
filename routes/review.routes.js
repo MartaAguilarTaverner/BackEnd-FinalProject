@@ -8,10 +8,10 @@ router.get('/', AuthMiddleware.authToken, ReviewController.getAll);
 
 router.get('/:id', AuthMiddleware.authToken, ReviewController.getOnebyId);
 
-router.post('/:id', AuthMiddleware.authToken, ReviewController.doReview);
+router.post('/:id', AuthMiddleware.userIsAllowed, ReviewController.doReview);
 
-router.put('/:id', AuthMiddleware.authToken, ReviewController.modifyReview);
+router.put('/:id', AuthMiddleware.userIsAllowed, ReviewController.modifyReview);
 
-router.delete('/:id', AuthMiddleware.authToken, ReviewController.deleteReview);
+router.delete('/:id', AuthMiddleware.userIsAllowed, ReviewController.deleteReview);
 
 module.exports = router;

@@ -10,8 +10,8 @@ router.get('/:id', MediaController.getOnebyId);
 
 router.post('/:id', AuthMiddleware.isOwner, MediaController.createMedia);
 
-router.put('/:id', AuthMiddleware.isOwner, MediaController.modifyMedia);
+router.put('/:id', AuthMiddleware.isOwner, AuthMiddleware.isAdmin, MediaController.modifyMedia);
 
-router.delete('/:id', AuthMiddleware.isOwner, MediaController.deleteMedia);
+router.delete('/:id', AuthMiddleware.isOwner, AuthMiddleware.isAdmin, MediaController.deleteMedia);
 
 module.exports = router;

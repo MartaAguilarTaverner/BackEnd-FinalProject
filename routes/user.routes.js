@@ -16,8 +16,8 @@ router.post('/login', UserController.login);
 
 router.post('/register', UserController.register);
 
-router.put('/modify', AuthMiddleware.authToken, UserController.modifyUser);
+router.put('/modify', AuthMiddleware.userIsAllowed, UserController.modifyUser);
 
-router.delete('/delete', AuthMiddleware.authToken, UserController.deleteUser);
+router.delete('/delete', AuthMiddleware.userIsAllowed, UserController.deleteUser);
 
 module.exports = router;
