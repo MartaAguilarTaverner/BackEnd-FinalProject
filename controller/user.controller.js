@@ -100,7 +100,6 @@ UserController.register = async (req, res) => {
             email: body.email,
             age: body.age,
             phoneNumber: body.phoneNumber,
-            description: body.description,
             profileImg: body.profileImg,
             password: body.password,
             isAdmin: false,
