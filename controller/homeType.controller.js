@@ -36,16 +36,13 @@ HomeTypeController.getOnebyId = async (req, res) => {
 HomeTypeController.createHomeType = async (req, res) => {
     try {
         const body = req.body;
-        const apartment = body.apartment;
-        const house = body.house;
-        const chalet = body.chalet;
-        const ruralHouse = body.ruralHouse;
-        const shared = body.shared;
+        const name = body.home.name;
 
-        const response = await homeType.create({ apartment, house, chalet, ruralHouse, shared });
+        const response = await homeType.create({ name });
 
         res.send({ id: response.id });
     } catch (error) {
+        console.log('🚀 ~ file: homeType.controller.js:45 ~ HomeTypeController.createHomeType= ~ error', error);
         res.status(500).send({
             message:
                 error.message ||
@@ -57,7 +54,7 @@ HomeTypeController.createHomeType = async (req, res) => {
 //MODIFY HOMETYPE
 HomeTypeController.modifyHomeType = async (req, res) => {
     try {
-        const body = req.body;
+        const body = req.body.home;
         const id = req.params.id;
         const homeObj = {};
 
@@ -78,13 +75,14 @@ HomeTypeController.modifyHomeType = async (req, res) => {
 };
 
 //DELETE HOMETYPE
+// TODO: Review error 500
 HomeTypeController.deleteHomeType = async (req, res) => {
     try {
         const id = req.params.id;
 
         const response = await homeType.destroy({ where: { id } });
 
-        res.send(response);
+        res.status(200).send();
     } catch (error) {
         res.status(500).send({
             message:

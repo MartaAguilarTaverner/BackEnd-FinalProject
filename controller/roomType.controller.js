@@ -36,18 +36,15 @@ RoomTypeController.getOnebyId = async (req, res) => {
 RoomTypeController.createRoomType = async (req, res) => {
     try {
         const body = req.body;
-        const individual = body.individual;
-        const twoBeds = body.twoBeds;
-        const masterBed = body.masterBed;
+        const name = body.roomType.name;
 
         const response = await roomType.create({
-            individual,
-            twoBeds,
-            masterBed,
+            name,
         });
 
         res.send({ id: response.id });
     } catch (error) {
+        console.log('🚀 ~ file: roomType.controller.js:47 ~ RoomTypeController.createRoomType= ~ error', error);
         res.status(500).send({
             message:
                 error.message ||
@@ -59,7 +56,7 @@ RoomTypeController.createRoomType = async (req, res) => {
 //MODIFY ROOMTYPE
 RoomTypeController.modifyRoomType = async (req, res) => {
     try {
-        const body = req.body;
+        const body = req.body.roomType;
         const id = req.params.id;
         const roomObj = {};
 
@@ -81,11 +78,12 @@ RoomTypeController.modifyRoomType = async (req, res) => {
 //DELETE ROOMTYPE
 RoomTypeController.deleteRoomType = async (req, res) => {
     try {
-        const id = req.parms.id;
+        const id = req.params.id;
         const response = await roomType.destroy({ where: { id } });
 
-        res.send(response);
+        res.status(200).send(response);
     } catch (error) {
+        console.log('🚀 ~ file: roomType.controller.js:86 ~ RoomTypeController.deleteRoomType ~ error', error);
         res.status(500).send({
             message:
                 error.message ||

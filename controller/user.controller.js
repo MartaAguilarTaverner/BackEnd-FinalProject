@@ -83,7 +83,6 @@ UserController.login = async (req, res) => {
             throw new Error('No user registered with those credentials');
         }
     } catch (error) {
-        console.log('🚀 ~ file: user.controller.js:90 ~ UserController.login= ~ error', error);
         res.status(500).send({
             message: error.message || 'Some error ocurred while trying to access, try again in few minutes',
         });
@@ -120,12 +119,12 @@ UserController.register = async (req, res) => {
 //MODIFY USER
 UserController.modifyUser = async (req, res) => {
     try {
-        const body = req.body;
+        const userBody = req.body;
         const id = req.params.id;
         const userObj = {};
 
-        Object.keys(body).forEach((property) => {
-            userObj[property] = body[property];
+        Object.keys(userBody).forEach((property) => {
+            userObj[property] = userBody[property];
         });
 
         const result = await user.update(userObj, { where: { id } });
@@ -149,6 +148,7 @@ UserController.deleteUser = async (req, res) => {
 
         res.send(response);
     } catch (error) {
+        console.log('🚀 ~ file: user.controller.js:151 ~ UserController.deleteUser ~ error', error);
         res.status(500).send({
             message:
                 error.message ||
