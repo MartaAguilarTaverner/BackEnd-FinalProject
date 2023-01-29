@@ -6,12 +6,12 @@ const router = express.Router();
 
 router.get('/', RoomTypeController.getAll);
 
-router.get('/:id', RoomTypeController.getOnebyId);
+router.get('/:id(\\d+$)', RoomTypeController.getOnebyId);
 
-router.post('/:id', AuthMiddleware.isAdmin, RoomTypeController.createRoomType);
+router.post('/', AuthMiddleware.isAdmin, RoomTypeController.createRoomType);
 
-router.put('/:id', AuthMiddleware.isAdmin, RoomTypeController.modifyRoomType);
+router.put('/:id(\\d+$)', AuthMiddleware.isAdmin, RoomTypeController.modifyRoomType);
 
-router.delete('/:id', AuthMiddleware.isAdmin, RoomTypeController.deleteRoomType);
+router.delete('/:id(\\d+$)', AuthMiddleware.isAdmin, RoomTypeController.deleteRoomType);
 
 module.exports = router;
