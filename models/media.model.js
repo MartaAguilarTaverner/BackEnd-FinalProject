@@ -1,9 +1,10 @@
 const { Model } = require('sequelize');
+const RentedSpaceModel = require('./rentedSpace.model');
 
 module.exports = (sequelize, DataTypes) => {
     class Media extends Model {
         static associate(models) {
-            Media.belongsTo(models.rentedSpace, {
+            this.belongsTo(models.rentedSpace, {
                 foreignKey: 'mediaId',
             });
         }
@@ -12,43 +13,43 @@ module.exports = (sequelize, DataTypes) => {
     Media.init(
         {
             img1: {
-                type: DataTypes.STRING,
+                type: DataTypes.BLOB('medium'),
                 allowNull: false,
             },
             img2: {
-                type: DataTypes.STRING,
+                type: DataTypes.BLOB('medium'),
                 allowNull: false,
             },
             img3: {
-                type: DataTypes.STRING,
+                type: DataTypes.BLOB('medium'),
                 allowNull: false,
             },
             img4: {
-                type: DataTypes.STRING,
+                type: DataTypes.BLOB('medium'),
                 allowNull: false,
             },
             img5: {
-                type: DataTypes.STRING,
+                type: DataTypes.BLOB('medium'),
                 allowNull: false,
             },
             img6: {
-                type: DataTypes.STRING,
+                type: DataTypes.BLOB('medium'),
                 allowNull: false,
             },
-            img7: DataTypes.STRING,
-            img8: DataTypes.STRING,
-            img9: DataTypes.STRING,
-            img10: DataTypes.STRING,
-            img11: DataTypes.STRING,
-            img12: DataTypes.STRING,
-            img13: DataTypes.STRING,
-            img14: DataTypes.STRING,
-            img15: DataTypes.STRING,
-            img16: DataTypes.STRING,
-            img17: DataTypes.STRING,
-            img18: DataTypes.STRING,
-            img19: DataTypes.STRING,
-            img20: DataTypes.STRING,
+            img7: DataTypes.BLOB('medium'),
+            img8: DataTypes.BLOB('medium'),
+            img9: DataTypes.BLOB('medium'),
+            img10: DataTypes.BLOB('medium'),
+            img11: DataTypes.BLOB('medium'),
+            img12: DataTypes.BLOB('medium'),
+            img13: DataTypes.BLOB('medium'),
+            img14: DataTypes.BLOB('medium'),
+            img15: DataTypes.BLOB('medium'),
+            img16: DataTypes.BLOB('medium'),
+            img17: DataTypes.BLOB('medium'),
+            img18: DataTypes.BLOB('medium'),
+            img19: DataTypes.BLOB('medium'),
+            img20: DataTypes.BLOB('medium'),
         },
         {
             sequelize,

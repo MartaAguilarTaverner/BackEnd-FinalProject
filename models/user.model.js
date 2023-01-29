@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
                 minLength: 9,
                 maxLength: 15,
             },
-            profileImg: DataTypes.STRING,
+            profileImg: DataTypes.BLOB('medium'),
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,

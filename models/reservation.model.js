@@ -5,10 +5,10 @@ const RentedSpaceModel = require('./rentedSpace.model');
 module.exports = (sequelize, DataTypes) => {
     class Reservation extends Model {
         static associate(models) {
-            Reservation.belongsTo(models.user, {
+            this.belongsTo(models.user, {
                 foreignKey: 'userId',
             });
-            Reservation.belongsTo(models.rentedSpace, {
+            this.belongsTo(models.rentedSpace, {
                 foreignKey: 'rentedSpaceId',
             });
         }
@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 references: {
                     model: RentedSpaceModel,
+                    key: 'id',
                 },
                 allowNull: false,
             },

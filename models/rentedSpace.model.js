@@ -10,14 +10,14 @@ module.exports = (sequelize, DataTypes) => {
             this.hasMany(models.reservation, {
                 foreignKey: 'reservationId',
             });
-            this.hasMany(models.media, {
+            this.hasOne(models.media, {
                 foreignKey: 'mediaId',
             });
-            this.hasMany(models.roomType, {
-                foreignKey: 'roomTypeId',
+            this.belongsToMany(models.roomType, {
+                through: 'RentedSpace_RoomType',
             });
-            this.hasMany(models.homeType, {
-                foreignKey: 'homeTypeId',
+            this.belongsToMany(models.homeType, {
+                through: 'RentedSpace_HomeType',
             });
             this.belongsTo(models.user, {
                 foreignKey: 'userId',

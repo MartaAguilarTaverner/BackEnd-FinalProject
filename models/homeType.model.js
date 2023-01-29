@@ -1,10 +1,11 @@
 const { Model } = require('sequelize');
+const RentedSpaceModel = require('./rentedSpace.model');
 
 module.exports = (sequelize, DataTypes) => {
     class HomeType extends Model {
         static associate(models) {
-            HomeType.belongsTo(models.rentedSpace, {
-                foreignKey: 'homeTypeId',
+            this.belongsToMany(models.rentedSpace, {
+                through: 'RentedSpace_HomeType',
             });
         }
     }
