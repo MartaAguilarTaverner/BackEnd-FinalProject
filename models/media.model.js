@@ -4,7 +4,7 @@ const RentedSpaceModel = require('./rentedSpace.model');
 module.exports = (sequelize, DataTypes) => {
     class Media extends Model {
         static associate(models) {
-            this.belongsTo(models.rentedSpace, {
+            this.hasOne(models.rentedSpace, {
                 foreignKey: 'mediaId',
             });
         }

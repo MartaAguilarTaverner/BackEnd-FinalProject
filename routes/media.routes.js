@@ -6,12 +6,12 @@ const router = express.Router();
 
 router.get('/', MediaController.getAll);
 
-router.get('/:id', MediaController.getOnebyId);
+router.get('/:id(\\d+$)', MediaController.getOnebyId);
 
-router.post('/:id', AuthMiddleware.isOwner, MediaController.createMedia);
+router.post('/', AuthMiddleware.isOwner, MediaController.createMedia);
 
-router.put('/:id', AuthMiddleware.isOwner, AuthMiddleware.isAdmin, MediaController.modifyMedia);
+router.put('/:id(\\d+$)', AuthMiddleware.userIsAllowed, MediaController.modifyMedia);
 
-router.delete('/:id', AuthMiddleware.isOwner, AuthMiddleware.isAdmin, MediaController.deleteMedia);
+router.delete('/:id(\\d+$)', AuthMiddleware.userIsAllowed, MediaController.deleteMedia);
 
 module.exports = router;

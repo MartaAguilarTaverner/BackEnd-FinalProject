@@ -32,7 +32,7 @@ RentedSpaceController.getAllbyUserId = async (req, res) => {
 
 RentedSpaceController.getAllbyRoomTypeId = async (req, res) => {
     try {
-        const roomTypeId = req.params.roomTypeid;
+        const roomTypeId = req.params.roomTypeId;
 
         const response = await rentedSpace.finAll({ where: { roomTypeId } });
 
@@ -46,7 +46,7 @@ RentedSpaceController.getAllbyRoomTypeId = async (req, res) => {
 
 RentedSpaceController.getAllbyHomeTypeId = async (req, res) => {
     try {
-        const homeTypeId = req.params.homeTypeid;
+        const homeTypeId = req.params.homeTypeId;
 
         const response = await rentedSpace.finAll({ where: { homeTypeId } });
 
@@ -60,7 +60,7 @@ RentedSpaceController.getAllbyHomeTypeId = async (req, res) => {
 
 RentedSpaceController.getAllbyMediaId = async (req, res) => {
     try {
-        const mediaId = req.params.mediaid;
+        const mediaId = req.params.mediaId;
 
         const response = await rentedSpace.findAll({ where: { mediaId } });
 
@@ -95,6 +95,7 @@ RentedSpaceController.createRentedSpace = async (req, res) => {
         const homeTypeId = body.homeTypeId;
         const roomTypeId = body.roomTypeId;
         const mediaId = body.mediaId;
+        const title = body.title;
         const maxPersons = body.maxPersons;
         const numBedrooms = body.numBedrooms;
         const numBathrooms = body.numBathrooms;
@@ -110,11 +111,12 @@ RentedSpaceController.createRentedSpace = async (req, res) => {
         const latitude = body.latitude;
         const longitude = body.longitude;
 
-        const response = await review.create({
+        const responseRented = await rentedSpace.create({
             userId,
             homeTypeId,
             roomTypeId,
             mediaId,
+            title,
             maxPersons,
             numBedrooms,
             numBathrooms,
@@ -131,7 +133,9 @@ RentedSpaceController.createRentedSpace = async (req, res) => {
             longitude,
         });
 
-        res.send({ id: response.id });
+        await user.update({ isOwner: true }, { where: { id: userId } });
+
+        res.send({ id: responseRented.id });
     } catch (error) {
         res.status(500).send({
             message:

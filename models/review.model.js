@@ -4,7 +4,7 @@ const ReservationModel = require('./reservation.model');
 module.exports = (sequelize, DataTypes) => {
     class Review extends Model {
         static associate(models) {
-            Review.belongsTo(models.reservation, {
+            this.belongsTo(models.reservation, {
                 foreignKey: 'reservationId',
             });
         }

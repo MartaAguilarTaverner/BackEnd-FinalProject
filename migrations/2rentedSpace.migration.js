@@ -51,7 +51,7 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
                 minLength: 10,
-                maxLength: 10,
+                maxLength: 50,
             },
             maxPersons: {
                 type: Sequelize.INTEGER,
@@ -97,10 +97,6 @@ module.exports = {
             },
             price: {
                 type: Sequelize.DECIMAL(10, 2),
-                allowNull: false,
-            },
-            publishedAt: {
-                type: Sequelize.DATE,
                 allowNull: false,
             },
             latitude: {

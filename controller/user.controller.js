@@ -146,7 +146,7 @@ UserController.deleteUser = async (req, res) => {
 
         const response = await user.destroy({ where: { id } });
 
-        res.send(response);
+        res.status(200).send('');
     } catch (error) {
         console.log('🚀 ~ file: user.controller.js:151 ~ UserController.deleteUser ~ error', error);
         res.status(500).send({

@@ -13,7 +13,6 @@ AuthMiddleware.generateAccessToken = (username) =>
 AuthMiddleware.authToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
-    console.log('🚀 ~ file: auth.users.js:16 ~ token', req);
 
     if (!token) {
         return res.sendStatus(401);
@@ -37,7 +36,9 @@ AuthMiddleware.isAdmin = async (req, res, next) => {
 
     const result = await user.findByPk(userId);
 
-    if (result && !result.isAdmin) {
+    console.log(req.body);
+
+    if (!result || !result.isAdmin) {
         return res.sendStatus(403);
     }
 
@@ -47,9 +48,9 @@ AuthMiddleware.isAdmin = async (req, res, next) => {
 AuthMiddleware.isOwner = async (req, res, next) => {
     const userId = req.body.userId;
 
-    const user = await user.findByPk(userId);
+    const result = await user.findByPk(userId);
 
-    if (!user.isOwner) {
+    if (!result.isOwner) {
         return res.sendStatus(403);
     }
 
@@ -57,12 +58,12 @@ AuthMiddleware.isOwner = async (req, res, next) => {
 };
 
 AuthMiddleware.userIsAllowed = async (req, res, next) => {
-    const userId = req.params.id;
+    const userId = req.body.userId;
     const userBody = req.body;
 
     const foundUser = await user.findByPk(userId);
 
-    if (userBody.id === parseInt(userId, 10) || foundUser.isAdmin) {
+    if (userBody.id === parseInt(userId, 10) || foundUser.isAdmin || foundUser.isOwner) {
         next();
     } else {
         return res.sendStatus(403);

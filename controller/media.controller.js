@@ -11,6 +11,7 @@ MediaController.getAll = async (req, res) => {
 
         res.send(response);
     } catch (error) {
+        console.log('🚀 ~ file: media.controller.js:14 ~ MediaController.getAll= ~ error', error);
         res.status(500).send({
             message: error.message || 'Some error ocurred while retrieving all the media',
         });
@@ -51,6 +52,7 @@ MediaController.createMedia = async (req, res) => {
                 mediaObj[property] = body[property];
             }
         });
+
         const response = await media.create(mediaObj);
 
         res.send({ id: response.id });
@@ -101,6 +103,6 @@ MediaController.deleteMedia = async (req, res) => {
     }
 };
 
-//TODO the crypto for the password, do the routes, put few seeders, test.
+// TODO: the crypto for the password, do the routes, put few seeders, test.
 
 module.exports = MediaController;

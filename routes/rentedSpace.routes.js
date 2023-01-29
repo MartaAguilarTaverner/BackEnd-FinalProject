@@ -8,13 +8,15 @@ router.get('/', RentedSpaceController.getAll);
 
 router.get('/all', AuthMiddleware.userIsAllowed, RentedSpaceController.getAllbyUserId);
 
-router.get('/roomtype', RentedSpaceController.getAllbyRoomTypeId);
+router.get('/roomtype/:roomTypeId(\\d+$)', RentedSpaceController.getAllbyRoomTypeId);
 
-router.get('/media', RentedSpaceController.getAllbyMediaId);
+router.get('/hometype/:homeTypeId(\\d+$)', RentedSpaceController.getAllbyHomeTypeId);
 
-router.get('/:id', RentedSpaceController.getOnebyId);
+router.get('/media/:mediaTypeId(\\d+$)', RentedSpaceController.getAllbyMediaId);
 
-router.post('/create', RentedSpaceController.createRentedSpace);
+router.get('/:id(\\d+$)', RentedSpaceController.getOnebyId);
+
+router.post('/', RentedSpaceController.createRentedSpace);
 
 router.put('/modify', AuthMiddleware.isOwner, AuthMiddleware.isAdmin, RentedSpaceController.modifyRentedSpace);
 

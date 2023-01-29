@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             this.hasMany(models.reservation, {
                 foreignKey: 'reservationId',
             });
-            this.hasOne(models.media, {
+            this.belongsTo(models.media, {
                 foreignKey: 'mediaId',
             });
             this.belongsToMany(models.roomType, {
@@ -108,10 +108,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             price: {
                 type: DataTypes.DECIMAL(10, 2),
-                allowNull: false,
-            },
-            publishedAt: {
-                type: DataTypes.DATE,
                 allowNull: false,
             },
             latitude: {
