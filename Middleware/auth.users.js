@@ -13,6 +13,7 @@ AuthMiddleware.generateAccessToken = (username) =>
 AuthMiddleware.authToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
+    console.log('🚀 ~ file: auth.users.js:16 ~ token', req);
 
     if (!token) {
         return res.sendStatus(401);
@@ -56,19 +57,16 @@ AuthMiddleware.isOwner = async (req, res, next) => {
 };
 
 AuthMiddleware.userIsAllowed = async (req, res, next) => {
-    const userId = req.body.userId;
-    const user = req.body.user;
-
-    if (user.userId !== userId) {
-        return res.sendStatus(403);
-    }
+    const userId = req.params.id;
+    const userBody = req.body;
 
     const foundUser = await user.findByPk(userId);
 
-    if (!foundUser.isAdmin) {
+    if (userBody.id === parseInt(userId, 10) || foundUser.isAdmin) {
+        next();
+    } else {
         return res.sendStatus(403);
     }
-    next();
 };
 
 module.exports = AuthMiddleware;
