@@ -20,7 +20,7 @@ module.exports = {
             homeTypeId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'rentedSpace',
+                    model: 'homeType',
                     key: 'id',
                 },
                 allowNull: false,
@@ -30,7 +30,7 @@ module.exports = {
             roomTypeId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'rentedSpace',
+                    model: 'roomType',
                     key: 'id',
                 },
                 allowNull: false,
@@ -40,7 +40,7 @@ module.exports = {
             mediaId: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'rentedSpace',
+                    model: 'media',
                     key: 'id',
                 },
                 allowNull: false,
@@ -109,6 +109,10 @@ module.exports = {
             },
             longitude: {
                 type: Sequelize.FLOAT,
+                allowNull: false,
+            },
+            createdAt: {
+                type: Sequelize.DATE,
                 allowNull: false,
             },
             updatedAt: {
