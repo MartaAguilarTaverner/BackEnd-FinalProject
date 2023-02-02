@@ -99,14 +99,6 @@ module.exports = {
                 type: Sequelize.DECIMAL(10, 2),
                 allowNull: false,
             },
-            latitude: {
-                type: Sequelize.FLOAT,
-                allowNull: false,
-            },
-            longitude: {
-                type: Sequelize.FLOAT,
-                allowNull: false,
-            },
             createdAt: {
                 type: Sequelize.DATE,
                 allowNull: false,

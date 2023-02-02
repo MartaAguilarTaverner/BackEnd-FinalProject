@@ -39,7 +39,6 @@ module.exports = {
                 minLength: 9,
                 maxLength: 15,
             },
-            profileImg: Sequelize.BLOB('medium'),
             password: {
                 type: Sequelize.STRING,
                 allowNull: false,

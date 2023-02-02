@@ -19,18 +19,9 @@ module.exports = {
                 type: Sequelize.BLOB('medium'),
                 allowNull: false,
             },
-            img4: {
-                type: Sequelize.BLOB('medium'),
-                allowNull: false,
-            },
-            img5: {
-                type: Sequelize.BLOB('medium'),
-                allowNull: false,
-            },
-            img6: {
-                type: Sequelize.BLOB('medium'),
-                allowNull: false,
-            },
+            img4: Sequelize.BLOB('medium'),
+            img5: Sequelize.BLOB('medium'),
+            img6: Sequelize.BLOB('medium'),
             img7: Sequelize.BLOB('medium'),
             img8: Sequelize.BLOB('medium'),
             img9: Sequelize.BLOB('medium'),

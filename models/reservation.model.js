@@ -42,11 +42,6 @@ module.exports = (sequelize, DataTypes) => {
             price: {
                 type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
-                field: 'priceNight',
-            },
-            total: {
-                type: DataTypes.DECIMAL(10, 2),
-                allowNull: false,
                 field: 'totalPrice',
             },
             createdAt: {

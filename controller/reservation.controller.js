@@ -68,7 +68,6 @@ ReservationController.doReservation = async (req, res) => {
         const startDate = body.startDate;
         const endDate = body.endDate;
         const price = body.price;
-        const total = body.total;
 
         const response = await reservation.create({ userId, rentedSpaceId, startDate, endDate, price, total });
 

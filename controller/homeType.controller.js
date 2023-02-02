@@ -75,7 +75,6 @@ HomeTypeController.modifyHomeType = async (req, res) => {
 };
 
 //DELETE HOMETYPE
-// TODO: Review error 500
 HomeTypeController.deleteHomeType = async (req, res) => {
     try {
         const id = req.params.id;

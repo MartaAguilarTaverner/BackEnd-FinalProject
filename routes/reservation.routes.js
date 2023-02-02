@@ -1,7 +1,8 @@
 const express = require('express');
 const AuthMiddleware = require('../Middleware/auth.users');
 const ReservationController = require('../controller/reservation.controller');
-const router = require('./homeType.routes');
+
+const router = express.Router();
 
 router.get('/', AuthMiddleware.isAdmin, ReservationController.getAll);
 

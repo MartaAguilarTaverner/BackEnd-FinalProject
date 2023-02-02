@@ -108,8 +108,6 @@ RentedSpaceController.createRentedSpace = async (req, res) => {
         const internet = body.internet;
         const price = body.price;
         const publishedAt = body.publishedAt;
-        const latitude = body.latitude;
-        const longitude = body.longitude;
 
         const responseRented = await rentedSpace.create({
             userId,
@@ -129,8 +127,6 @@ RentedSpaceController.createRentedSpace = async (req, res) => {
             internet,
             price,
             publishedAt,
-            latitude,
-            longitude,
         });
 
         await user.update({ isOwner: true }, { where: { id: userId } });

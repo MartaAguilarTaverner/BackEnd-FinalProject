@@ -31,6 +31,20 @@ ReviewController.getOnebyId = async (req, res) => {
     }
 };
 
+ReviewController.getAllbyUserId = async (req, res) => {
+    try {
+        const userId = req.params.userid;
+
+        const response = await review.findAll({ where: { userId } });
+
+        res.send(response);
+    } catch (error) {
+        res.status(500).send({
+            message: error.message || 'Some error ocurred while retrieving all reviews of one user',
+        });
+    }
+};
+
 //CREATE REVIEW
 ReviewController.doReview = async (req, res) => {
     try {

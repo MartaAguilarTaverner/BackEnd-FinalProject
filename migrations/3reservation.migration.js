@@ -40,11 +40,6 @@ module.exports = {
             price: {
                 type: Sequelize.DECIMAL(10, 2),
                 allowNull: false,
-                field: 'priceNight',
-            },
-            total: {
-                type: Sequelize.DECIMAL(10, 2),
-                allowNull: false,
                 field: 'totalPrice',
             },
             createdAt: {
