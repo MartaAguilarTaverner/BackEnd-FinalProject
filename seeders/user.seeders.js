@@ -138,7 +138,7 @@ module.exports = {
                 age: new Date('10-31-1992'),
                 phoneNumber: '+34679798761',
                 profileImg: '',
-                password: 'rxH6WXPXX37FYFjb',
+                password: 'Logan3110',
                 isAdmin: true,
                 isOwner: false,
                 createdAt: new Date(),

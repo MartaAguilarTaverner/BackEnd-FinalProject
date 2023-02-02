@@ -16,6 +16,8 @@ router.post('/login', UserController.login);
 
 router.post('/register', UserController.register);
 
+router.post('/create', AuthMiddleware.isAdmin, UserController.register);
+
 router.put('/:id(\\d+$)', AuthMiddleware.authToken, AuthMiddleware.userIsAllowed, UserController.modifyUser);
 
 router.delete('/:id(\\d+$)', AuthMiddleware.authToken, AuthMiddleware.userIsAllowed, UserController.deleteUser);
