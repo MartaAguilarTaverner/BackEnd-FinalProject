@@ -1,21 +1,22 @@
 const express = require('express');
+
 const AuthMiddleware = require('../Middleware/auth.users');
 const ReservationController = require('../controller/reservation.controller');
 
 const router = express.Router();
 
-router.get('/', AuthMiddleware.isAdmin, ReservationController.getAll);
+router.post('/', AuthMiddleware.isAdmin, ReservationController.getAll);
 
-router.get('/user', AuthMiddleware.userIsAllowed, ReservationController.getAllbyUserId);
+router.post('/user', AuthMiddleware.userIsAllowed, ReservationController.getAllbyUserId);
 
 router.get('/rentedspace', AuthMiddleware.authToken, ReservationController.getAllbyRentedSpaceId);
 
-router.get('/:id', AuthMiddleware.userIsAllowed, ReservationController.getOnebyId);
+router.get('/:id(\\d+$)', AuthMiddleware.userIsAllowed, ReservationController.getOnebyId);
 
-router.post('/:id', AuthMiddleware.authToken, ReservationController.doReservation);
+router.post('/:id(\\d+$)', AuthMiddleware.authToken, ReservationController.doReservation);
 
-router.put('/:id', AuthMiddleware.userIsAllowed, ReservationController.modifyReservation);
+router.put('/:id(\\d+$)', AuthMiddleware.userIsAllowed, ReservationController.modifyReservation);
 
-router.delete('/:id', AuthMiddleware.userIsAllowed, ReservationController.modifyReservation);
+router.delete('/:id(\\d+$)', AuthMiddleware.userIsAllowed, ReservationController.modifyReservation);
 
 module.exports = router;

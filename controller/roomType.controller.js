@@ -44,7 +44,6 @@ RoomTypeController.createRoomType = async (req, res) => {
 
         res.send({ id: response.id });
     } catch (error) {
-        console.log('🚀 ~ file: roomType.controller.js:47 ~ RoomTypeController.createRoomType= ~ error', error);
         res.status(500).send({
             message:
                 error.message ||
@@ -83,7 +82,6 @@ RoomTypeController.deleteRoomType = async (req, res) => {
 
         res.status(200).send(response);
     } catch (error) {
-        console.log('🚀 ~ file: roomType.controller.js:86 ~ RoomTypeController.deleteRoomType ~ error', error);
         res.status(500).send({
             message:
                 error.message ||

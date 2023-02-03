@@ -8,7 +8,7 @@ router.get('/', MediaController.getAll);
 
 router.get('/:id(\\d+$)', MediaController.getOnebyId);
 
-router.post('/', AuthMiddleware.isOwner, MediaController.createMedia);
+router.post('/', MediaController.createMedia);
 
 router.put('/:id(\\d+$)', AuthMiddleware.userIsAllowed, MediaController.modifyMedia);
 

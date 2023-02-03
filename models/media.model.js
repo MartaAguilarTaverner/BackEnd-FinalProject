@@ -36,6 +36,14 @@ module.exports = (sequelize, DataTypes) => {
             img13: DataTypes.BLOB('medium'),
             img14: DataTypes.BLOB('medium'),
             img15: DataTypes.BLOB('medium'),
+            createdAt: {
+                type: DataTypes.DATE,
+                allowNull: false,
+            },
+            updatedAt: {
+                type: DataTypes.DATE,
+                allowNull: false,
+            },
         },
         {
             sequelize,

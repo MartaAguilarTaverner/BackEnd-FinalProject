@@ -1,5 +1,5 @@
 const { Model } = require('sequelize');
-const ReservationModel = require('./reservation.model');
+const UserModel = require('./user.model');
 const RoomTypeModel = require('./roomType.model');
 const MediaModel = require('./media.model');
 const HomeTypeModel = require('./homeType.model');
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     class RentedSpace extends Model {
         static associate(models) {
             this.hasMany(models.reservation, {
-                foreignKey: 'reservationId',
+                foreignKey: 'rentedSpaceId',
             });
             this.belongsTo(models.media, {
                 foreignKey: 'mediaId',
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             userId: {
                 type: DataTypes.INTEGER,
                 references: {
-                    model: ReservationModel,
+                    model: UserModel,
                     key: 'userId',
                 },
                 allowNull: false,

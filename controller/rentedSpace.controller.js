@@ -1,5 +1,6 @@
 const db = require('../models');
 const rentedSpace = db.rentedSpace;
+const user = db.user;
 
 const RentedSpaceController = {};
 
@@ -90,8 +91,8 @@ RentedSpaceController.getOnebyId = async (req, res) => {
 //CREATE RENTEDSPACE
 RentedSpaceController.createRentedSpace = async (req, res) => {
     try {
-        const body = req.body;
-        const userId = body.userId;
+        const body = req.body.rentedSpace;
+        const userId = req.body.userId;
         const homeTypeId = body.homeTypeId;
         const roomTypeId = body.roomTypeId;
         const mediaId = body.mediaId;

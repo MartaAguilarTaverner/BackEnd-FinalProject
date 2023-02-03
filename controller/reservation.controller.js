@@ -18,12 +18,13 @@ ReservationController.getAll = async (req, res) => {
 
 ReservationController.getAllbyUserId = async (req, res) => {
     try {
-        const userId = req.params.userid;
+        const userId = req.body.userId;
 
         const response = await reservation.findAll({ where: { userId } });
 
         res.send(response);
     } catch (error) {
+        console.log('🚀 ~ file: reservation.controller.js:27 ~ ReservationController.getAllbyUserId= ~ error', error);
         res.status(500).send({
             message: error.message || 'Some error ocurred while retrieving all reservations of one user',
         });

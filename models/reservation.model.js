@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
             this.belongsTo(models.rentedSpace, {
                 foreignKey: 'rentedSpaceId',
             });
+            this.hasOne(models.review, {
+                foreignKey: 'reservationId',
+            });
         }
     }
     Reservation.init(

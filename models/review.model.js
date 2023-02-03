@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
                 },
                 allowNull: false,
             },
-            reating: {
+            rating: {
                 type: DataTypes.DECIMAL(10, 2),
                 allowNull: false,
                 field: 'Rating',
@@ -40,8 +40,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             sequelize,
-            modelName: 'Review',
-            tableName: 'Review',
+            modelName: 'review',
+            tableName: 'review',
         }
     );
     return Review;

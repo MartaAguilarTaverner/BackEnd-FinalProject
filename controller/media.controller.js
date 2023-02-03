@@ -11,7 +11,6 @@ MediaController.getAll = async (req, res) => {
 
         res.send(response);
     } catch (error) {
-        console.log('🚀 ~ file: media.controller.js:14 ~ MediaController.getAll= ~ error', error);
         res.status(500).send({
             message: error.message || 'Some error ocurred while retrieving all the media',
         });
@@ -36,15 +35,12 @@ MediaController.getOnebyId = async (req, res) => {
 //CREATE MEDIA
 MediaController.createMedia = async (req, res) => {
     try {
-        const body = req.body;
+        const body = req.body.media;
 
         const mediaObj = {
             img1: body.img1,
             img2: body.img2,
             img3: body.img3,
-            img4: body.img4,
-            img5: body.img5,
-            img6: body.img6,
         };
 
         Object.keys(body).forEach((property) => {

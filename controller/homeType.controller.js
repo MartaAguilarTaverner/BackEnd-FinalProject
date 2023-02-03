@@ -42,7 +42,6 @@ HomeTypeController.createHomeType = async (req, res) => {
 
         res.send({ id: response.id });
     } catch (error) {
-        console.log('🚀 ~ file: homeType.controller.js:45 ~ HomeTypeController.createHomeType= ~ error', error);
         res.status(500).send({
             message:
                 error.message ||

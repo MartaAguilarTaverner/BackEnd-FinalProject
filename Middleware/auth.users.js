@@ -13,7 +13,6 @@ AuthMiddleware.generateAccessToken = (username) =>
 AuthMiddleware.authToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
-    console.log(authHeader);
     if (!token) {
         return res.sendStatus(401);
     }
@@ -34,9 +33,9 @@ AuthMiddleware.authToken = (req, res, next) => {
 AuthMiddleware.isAdmin = async (req, res, next) => {
     const userId = req.body.userId;
 
-    const result = await user.findByPk(userId);
+    console.log('ENTTRO');
 
-    console.log(req.body);
+    const result = await user.findByPk(userId);
 
     if (!result || !result.isAdmin) {
         return res.sendStatus(403);
@@ -59,7 +58,7 @@ AuthMiddleware.isOwner = async (req, res, next) => {
 
 AuthMiddleware.userIsAllowed = async (req, res, next) => {
     const userId = req.body.userId;
-    const userBody = req.body;
+    const userBody = req.body.user;
 
     const foundUser = await user.findByPk(userId);
 

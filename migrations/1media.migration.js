@@ -31,11 +31,6 @@ module.exports = {
             img13: Sequelize.BLOB('medium'),
             img14: Sequelize.BLOB('medium'),
             img15: Sequelize.BLOB('medium'),
-            img16: Sequelize.BLOB('medium'),
-            img17: Sequelize.BLOB('medium'),
-            img18: Sequelize.BLOB('medium'),
-            img19: Sequelize.BLOB('medium'),
-            img20: Sequelize.BLOB('medium'),
             createdAt: {
                 type: Sequelize.DATE,
                 allowNull: false,
